@@ -1,6 +1,6 @@
 
 __author__ = "yehonadav"
-__version__ = "2019.9.4.11.27.8.183362"
+__version__ = "2019.9.4.12.45.28.870305"
 __author_email__ = "yonadav.barilan@gmail.com"
 __description__ = "qaviton process wrappers"
 __url__ = "https://github.com/qaviton/qaviton_processes.git"
