@@ -54,7 +54,7 @@ def run(*args) -> bytes:
 
 def run_async(*args) -> Popen:
     """https://stackoverflow.com/questions/16071866/non-blocking-subprocess-call
-    p = runIO("command")
+    p = run_async("command")
     while p.poll() is None:
         ...
     p.stdout

@@ -1,12 +1,3 @@
-
-__author__ = "yehonadav"
-__version__ = "2019.9.4.12.58.22.283354"
-__author_email__ = "yonadav.barilan@gmail.com"
-__description__ = "qaviton process wrappers"
-__url__ = "https://github.com/qaviton/qaviton_processes.git"
-__license__ = "apache-2.0"
-
-
 from qaviton_processes.system import (
     bs,
     run,
