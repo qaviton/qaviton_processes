@@ -2,36 +2,46 @@ from subprocess import run as run_block, Popen, PIPE, CalledProcessError
 from sys import executable
 
 
-def escape(string):
-    """escape double quote"""
-    s = []
-    add = s.append
-    i = 0
-    size = len(string)
-    while i < size:
+class Escape:
+    def __init__(self, avoid: str):
+        self.avoid = avoid
 
-        # ignore back slashes and the char after them
-        if string[i] == '\\':
-            while i < size:
+    def __call__(self, string):
+        i = 0
+        s = []
+        add = s.append
+        size = len(string)
+        avoid = self.avoid
+        while i < size:
+
+            # ignore back slashes and the char after them
+            if string[i] == '\\':
+                while i < size:
+                    add(string[i])
+                    i += 1
+
+                    if string[i] != '\\':
+                        add(string[i])
+                        i += 1
+                        break
+
+            # avoid
+            elif string[i] in avoid:
+                add('\\')
                 add(string[i])
                 i += 1
 
-                if string[i] != '\\':
-                    add(string[i])
-                    i += 1
-                    break
+            else:
+                add(string[i])
+                i += 1
 
-        # avoid double quotes
-        elif string[i] == '"':
-            add('\\')
-            add(string[i])
-            i += 1
+        return "".join(s)
 
-        else:
-            add(string[i])
-            i += 1
 
-    return "".join(s)
+escape = Escape('"')
+# escape_single_quote = Escape("'")
+# escape_space = Escape(" ")
+executable = '"'+executable+'"'
 
 
 def bs(value: bytes):
