@@ -1,3 +1,4 @@
+from qaviton_processes.multi_processing import Task
 from qaviton_processes.system import (
     bs,
     run,
